@@ -6,6 +6,7 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
 export default function Page() {
   const [error, setError] = useState<string | null>(null);
   const [uploadedImageId, setUploadedImageId] = useState<string | null>(null);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
   const [transformedImageUrl, setTransformedImageUrl] = useState<string | null>(
     null
   );
@@ -49,9 +50,9 @@ export default function Page() {
       );
 
       const data = await response.json();
-      console.log(data, "returned");
+
       setUploadedImageId(data.public_id);
-      console.log(data.public_id, "public id");
+      setUploadedImageUrl(data.secure_url);
     } catch (error) {
       setError("Upload failed");
       console.error("Error uploading to Cloudinary:", error);
@@ -82,6 +83,14 @@ export default function Page() {
         <input type="file" name="file" required />{" "}
         <button type="submit">Upload</button>
       </form>
+      <section>
+        <h2>Uploaded Image:</h2>
+        {uploadedImageUrl && (
+          <div className="max-w-md">
+            <img src={uploadedImageUrl} alt="" />
+          </div>
+        )}
+      </section>
       <form onSubmit={onCrop}>
         <h2>Cropping Mode</h2>
         <select name="cropping" id="cropping" className="text-black">
