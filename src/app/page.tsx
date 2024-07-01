@@ -102,21 +102,28 @@ export default function Page() {
 
     setTransformedImageUrl(transformationUrl);
   }
+  console.log(uploadedImageId, "uploadedididid");
 
-  console.log(allImages, "allimages");
+  function imageSelection(publicId: string) {
+    setUploadedImageId(publicId);
+  }
+
   return (
     <>
-      <section className="grid grid-cols-2 gap-4 lg:grid-cols-4 max-h-[550px] overflow-scroll">
-        {allImages.map((image, index) => {
-          return (
-            <img
-              className="max-w-50 max-h-50"
-              key={image.public_id}
-              src={image.secure_url}
-              alt=""
-            />
-          );
-        })}
+      <section className="grid grid-cols-2 gap-4 lg:grid-cols-6 max-h-[550px] overflow-scroll">
+        {allImages.map((image, index) => (
+          <button
+            key={image.public_id}
+            onClick={() => setUploadedImageId(image.public_id)}
+            className={
+              image.public_id === uploadedImageId
+                ? "bg-violet-500 hover:bg-violet-600 active:bg-violet-700 p-3"
+                : " "
+            }
+          >
+            <img className="max-w-50 max-h-50" src={image.secure_url} alt="" />
+          </button>
+        ))}
       </section>
       {error && <div style={{ color: "red" }}>{error}</div>}
       <UploadForm
