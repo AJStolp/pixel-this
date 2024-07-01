@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SIDEBARLINKS } from "./data";
 
 export default function SideBar() {
   return (
@@ -32,7 +33,12 @@ export default function SideBar() {
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
-            <li>
+            {SIDEBARLINKS.map((value) => (
+              <li key={value.key}>
+                <Link href={value.href}>{value.name}</Link>
+              </li>
+            ))}
+            {/* <li>
               <Link
                 href="/resize-crop"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -48,7 +54,7 @@ export default function SideBar() {
                 </svg>
                 <span className="ms-3">Resize & Crop</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </aside>

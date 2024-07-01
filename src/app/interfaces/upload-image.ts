@@ -1,8 +1,14 @@
-import { FormEventHandler } from "react";
+// interfaces/upload-image.ts
+import { FormEvent } from "react";
 
-export default interface UploadProps {
-  heading: string;
-  onUpload: FormEventHandler<HTMLFormElement>;
+export interface OnUploadParams {
+  event: FormEvent<HTMLFormElement>;
+  setUploadedImageId: (id: string) => void;
+  setUploadedImageUrl: (url: string) => void;
+  setError: (message: string) => void;
+}
+
+export interface UploadComponentProps {
   cta: string;
-  children: React.ReactNode;
+  heading: string;
 }

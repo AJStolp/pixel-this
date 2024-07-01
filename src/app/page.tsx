@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
-import UploadForm from "./components/upload";
+// import UploadForm from "./components/upload";
 import FetchedAllAssets from "./interfaces/fetched-all-assets";
 import { fetchAllImages } from "./utils/cloudinaryUtils";
 
@@ -72,46 +72,46 @@ export default function Page() {
     }
   }
 
-  async function onCrop(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  // async function onCrop(event: FormEvent<HTMLFormElement>) {
+  //   event.preventDefault();
 
-    if (!uploadedImageId) {
-      setError("No image uploaded to transform");
-      return;
-    }
+  //   if (!uploadedImageId) {
+  //     setError("No image uploaded to transform");
+  //     return;
+  //   }
 
-    const formData = new FormData(event.currentTarget);
-    const croppingMode = formData.get("cropping") as string;
-    const gravity = formData.get("gravity") as string;
-    const dimensions = formData.get("dimensions") as string;
-    const customDimensions = formData.get("custom-dimensions") as string;
+  //   const formData = new FormData(event.currentTarget);
+  //   const croppingMode = formData.get("cropping") as string;
+  //   const gravity = formData.get("gravity") as string;
+  //   const dimensions = formData.get("dimensions") as string;
+  //   const customDimensions = formData.get("custom-dimensions") as string;
 
-    let transformationDimensions = dimensions;
-    if (customDimensions) {
-      const dimensionPattern = /^((h_\d+)|(w_\d+))(,((h_\d+)|(w_\d+)))*$/;
-      if (!dimensionPattern.test(customDimensions)) {
-        setError(
-          "Invalid dimensions format. Please use h_<height>,w_<width> format."
-        );
-        return;
-      }
-      transformationDimensions = `,${customDimensions}`;
-    }
+  //   let transformationDimensions = dimensions;
+  //   if (customDimensions) {
+  //     const dimensionPattern = /^((h_\d+)|(w_\d+))(,((h_\d+)|(w_\d+)))*$/;
+  //     if (!dimensionPattern.test(customDimensions)) {
+  //       setError(
+  //         "Invalid dimensions format. Please use h_<height>,w_<width> format."
+  //       );
+  //       return;
+  //     }
+  //     transformationDimensions = `,${customDimensions}`;
+  //   }
 
-    const transformationUrl = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/c_${croppingMode}${gravity}${transformationDimensions}/${uploadedImageId}`;
+  //   const transformationUrl = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/c_${croppingMode}${gravity}${transformationDimensions}/${uploadedImageId}`;
 
-    setTransformedImageUrl(transformationUrl);
-  }
-  console.log(uploadedImageId, "uploadedididid");
+  //   setTransformedImageUrl(transformationUrl);
+  // }
+  // console.log(uploadedImageId, "uploadedididid");
 
-  function imageSelection(publicId: string) {
-    setUploadedImageId(publicId);
-  }
+  // function imageSelection(publicId: string) {
+  //   setUploadedImageId(publicId);
+  // }
 
   return (
     <>
       <section className="grid grid-cols-2 gap-4 lg:grid-cols-6 max-h-[550px] overflow-scroll">
-        {allImages.map((image, index) => (
+        {allImages.map((image) => (
           <button
             key={image.public_id}
             onClick={() => setUploadedImageId(image.public_id)}
@@ -126,13 +126,13 @@ export default function Page() {
         ))}
       </section>
       {error && <div style={{ color: "red" }}>{error}</div>}
-      <UploadForm
+      {/* <UploadForm
         heading={"Choose an image"}
         onUpload={onUpload}
         cta={"Upload"}
       >
         <input type="file" name="file" required />
-      </UploadForm>
+      </UploadForm> */}
       <section>
         <h2>Uploaded Image:</h2>
         {uploadedImageUrl && (
@@ -141,7 +141,7 @@ export default function Page() {
           </div>
         )}
       </section>
-      <form onSubmit={onCrop}>
+      {/* <form onSubmit={onCrop}>
         <h2>Gravity</h2>
         <select
           className="select-gravity text-black"
@@ -198,7 +198,7 @@ export default function Page() {
         <button className="block bg-white text-black mt-8" type="submit">
           Apply Transformation
         </button>
-      </form>
+      </form> */}
       {transformedImageUrl && (
         <div>
           <h2>Transformed Image:</h2>
