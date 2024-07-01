@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="p-4 sm:ml-64">
-        <UploadComponent cta={"Add Images"} heading={"Resize & Crop"} />
+        <UploadComponent cta={"Upload"} heading={"Upload Images"} />
         <SideBar />
         {children}
       </body>

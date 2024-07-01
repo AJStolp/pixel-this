@@ -5,7 +5,7 @@ export const SIDEBARLINKS = [
     key: "lib",
     name: "Library",
     icon: LibraryIcon,
-    href: "/library",
+    href: "/asset-library",
   },
   {
     key: "re",
