@@ -110,7 +110,7 @@ export default function Page() {
 
   return (
     <>
-      <section className="grid grid-cols-2 gap-4 lg:grid-cols-4 max-h-[550px] overflow-scroll">
+      <section className="grid grid-cols-2 gap-4 lg:grid-cols-6 max-h-[550px] overflow-scroll">
         {allImages.map((image, index) => (
           <button
             key={image.public_id}
