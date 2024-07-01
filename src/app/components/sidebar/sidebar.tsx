@@ -34,11 +34,26 @@ export default function SideBar() {
         <nav className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             {SIDEBARLINKS.map((value) => (
-              <li key={value.key}>
-                <Link href={value.href}>
-                  <value.icon />
-                  {value.name}
-                </Link>
+              <li key={value.key} className="p-4">
+                {value.href ? (
+                  <Link href={value.href} className="flex gap-2">
+                    <span>
+                      <value.icon />
+                    </span>
+                    {value.name}
+                  </Link>
+                ) : (
+                  <div className="flex gap-2">
+                    {value.icon && (
+                      <span>
+                        <value.icon />
+                      </span>
+                    )}
+                    {value.component && (
+                      <value.component cta="Upload" heading="" />
+                    )}
+                  </div>
+                )}
               </li>
             ))}
           </ul>

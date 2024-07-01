@@ -1,13 +1,9 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
-// import UploadForm from "./components/upload";
-import FetchedAllAssets from "./interfaces/fetched-all-assets";
-import { fetchAllImages } from "./utils/cloudinaryUtils";
+import { FormEvent, useState } from "react";
 
 export default function Page() {
   const [error, setError] = useState<string | null>(null);
-  const [allImages, setAllImages] = useState<FetchedAllAssets[]>([]);
   const [uploadedImageId, setUploadedImageId] = useState<string | null>(null);
   const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
   const [transformedImageUrl, setTransformedImageUrl] = useState<string | null>(
@@ -17,18 +13,6 @@ export default function Page() {
   const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
   const UPLOAD_PRESET = "ml_default";
   const API_KEY = process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY;
-
-  // useEffect(() => {
-  //   async function fetchImages() {
-  //     try {
-  //       const data = await fetchAllImages();
-  //       setAllImages(data);
-  //     } catch (error) {
-  //       setError("Failed to fetch images");
-  //     }
-  //   }
-  //   fetchImages();
-  // }, []);
 
   async function getSignature() {
     const response = await fetch("http://localhost:3001/get-signature", {
@@ -110,29 +94,7 @@ export default function Page() {
 
   return (
     <>
-      {/* <section className="grid grid-cols-2 gap-4 lg:grid-cols-6 max-h-[550px] overflow-scroll">
-        {allImages.map((image) => (
-          <button
-            key={image.public_id}
-            onClick={() => setUploadedImageId(image.public_id)}
-            className={
-              image.public_id === uploadedImageId
-                ? "bg-violet-500 hover:bg-violet-600 active:bg-violet-700 p-3"
-                : " "
-            }
-          >
-            <img className="max-w-50 max-h-50" src={image.secure_url} alt="" />
-          </button>
-        ))}
-      </section> */}
       {error && <div style={{ color: "red" }}>{error}</div>}
-      {/* <UploadForm
-        heading={"Choose an image"}
-        onUpload={onUpload}
-        cta={"Upload"}
-      >
-        <input type="file" name="file" required />
-      </UploadForm> */}
       <section>
         <h2>Uploaded Image:</h2>
         {uploadedImageUrl && (
