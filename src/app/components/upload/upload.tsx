@@ -1,8 +1,8 @@
 "use client";
 
 import React, { FormEvent, useState } from "react";
-import { onUpload } from "../utils/uploadHelper";
-import { UploadComponentProps } from "../interfaces/upload-image";
+import { onUpload } from "../../utils/uploadHelper";
+import { UploadComponentProps } from "../../interfaces/upload-image";
 
 export default function UploadComponent({
   cta,

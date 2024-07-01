@@ -1,14 +1,16 @@
+import { ResizeCropIcon, LibraryIcon } from "../../icons/icon";
+
 export const SIDEBARLINKS = [
   {
     key: "lib",
     name: "Library",
-    icon: "",
+    icon: LibraryIcon,
     href: "/library",
   },
   {
     key: "re",
     name: "Resize & Crop",
-    icon: "",
+    icon: ResizeCropIcon,
     href: "resize-crop",
   },
 ];

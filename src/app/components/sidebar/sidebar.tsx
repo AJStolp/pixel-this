@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SIDEBARLINKS } from "./data";
+import { SIDEBARLINKS } from "./sidebar-link-data";
 
 export default function SideBar() {
   return (
@@ -31,32 +31,18 @@ export default function SideBar() {
         className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <nav className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             {SIDEBARLINKS.map((value) => (
               <li key={value.key}>
-                <Link href={value.href}>{value.name}</Link>
+                <Link href={value.href}>
+                  <value.icon />
+                  {value.name}
+                </Link>
               </li>
             ))}
-            {/* <li>
-              <Link
-                href="/resize-crop"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                  fill="#e8eaed"
-                >
-                  <path d="M640-40 480-200l56-58 64 64v-86H360q-33 0-56.5-23.5T280-360v-240H80v-80h200v-86l-64 64-56-58 160-160 160 160-56 58-64-64v406h520v80H680v86l64-64 56 58L640-40Zm-40-400v-160H440v-80h160q33 0 56.5 23.5T680-600v160h-80Z" />
-                </svg>
-                <span className="ms-3">Resize & Crop</span>
-              </Link>
-            </li> */}
           </ul>
-        </div>
+        </nav>
       </aside>
     </>
   );
