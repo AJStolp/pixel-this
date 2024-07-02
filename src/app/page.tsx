@@ -161,12 +161,12 @@ export default function Page() {
           Apply Transformation
         </button>
       </form> */}
-      {transformedImageUrl && (
+      {/* {transformedImageUrl && (
         <div>
           <h2>Transformed Image:</h2>
           <img src={transformedImageUrl} alt="" />
         </div>
-      )}
+      )} */}
     </>
   );
 }

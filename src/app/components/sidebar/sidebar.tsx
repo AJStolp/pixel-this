@@ -28,13 +28,13 @@ export default function SideBar() {
       </button>
       <aside
         id="default-sidebar"
-        className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 max-w-[215px]"
         aria-label="Sidebar"
       >
-        <nav className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <nav className="h-full px-3 py-4 overflow-y-auto bg-[#1f1f1f]">
           <ul className="space-y-2 font-medium">
             {SIDEBARLINKS.map((value) => (
-              <li key={value.key} className="p-4">
+              <li key={value.key} className="p-4 cursor-pointer">
                 {value.href ? (
                   <Link href={value.href} className="flex gap-2">
                     <span>
@@ -43,7 +43,7 @@ export default function SideBar() {
                     {value.name}
                   </Link>
                 ) : (
-                  <div className="flex gap-2">
+                  <>
                     {value.icon && (
                       <span>
                         <value.icon />
@@ -52,7 +52,7 @@ export default function SideBar() {
                     {value.component && (
                       <value.component cta="Upload" heading="" />
                     )}
-                  </div>
+                  </>
                 )}
               </li>
             ))}

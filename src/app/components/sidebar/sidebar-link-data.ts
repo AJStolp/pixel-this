@@ -1,4 +1,4 @@
-import { ResizeCropIcon, LibraryIcon, UploadIcon } from "../../icons/icon";
+import { ResizeCropIcon, LibraryIcon } from "../../icons/icon";
 import UploadComponent from "../upload/upload";
 
 export const SIDEBARLINKS = [
