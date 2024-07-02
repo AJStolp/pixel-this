@@ -31,7 +31,7 @@ export default function SideBar() {
         className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 max-w-[215px]"
         aria-label="Sidebar"
       >
-        <nav className="h-full px-3 py-4 overflow-y-auto bg-[#1f1f1f]">
+        <nav className="h-full px-3 py-4 overflow-y-auto bg-asideBackground">
           <ul className="space-y-2 font-medium">
             {SIDEBARLINKS.map((value) => (
               <li key={value.key} className="p-4 cursor-pointer">

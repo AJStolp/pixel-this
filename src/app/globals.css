@@ -15,11 +15,9 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: #202124;
-}
+ * {
+  box-sizing: border-box;
+ }
 
 @layer utilities {
   .text-balance {

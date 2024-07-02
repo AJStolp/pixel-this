@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="p-4 sm:ml-64">
+      <body className="p-4 sm:ml-64 bg-background">
         {/* <UploadComponent cta={"Upload"} heading={"Upload Images"} /> */}
         <SideBar />
         {children}

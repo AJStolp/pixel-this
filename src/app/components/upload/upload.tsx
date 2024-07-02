@@ -42,7 +42,7 @@ export default function UploadComponent({
           height="24px"
           viewBox="0 -960 960 960"
           width="24px"
-          fill="#e8eaed"
+          fill="currentColor"
         >
           <path d="M160-80v-80h640v80H160Zm200-160v-280H200l280-360 280 360H600v280H360Zm80-80h80v-280h76L480-750 364-600h76v280Zm40-280Z" />
         </svg>
@@ -58,7 +58,7 @@ export default function UploadComponent({
       />
       {selectedFileName && <p>Selected File: {selectedFileName}</p>}
       <button
-        className={uploadedImageId == null ? "hidden" : "block"}
+        // className={uploadedImageId == null ? "hidden" : "block"}
         type="submit"
       >
         {cta}
