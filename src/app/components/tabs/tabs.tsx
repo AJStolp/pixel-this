@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { tabdata } from "./tab-data";
 
 export default function Tabs() {
+  const [toggleCropType, setToggleCropType] = useState<boolean>(false);
+  function toggleCropSelection() {
+    setToggleCropType(!toggleCropType);
+  }
   return (
     <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
       {tabdata.map((value) => (
@@ -10,7 +15,7 @@ export default function Tabs() {
             className="inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
             aria-current="page"
           >
-            {value}
+            {value.name}
           </a>
         </li>
       ))}
