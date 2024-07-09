@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Tabs from "../components/tabs/tabs";
 
 export default function ResizeCrop() {
   const [error, setError] = useState<string | null>(null);
@@ -59,7 +60,7 @@ export default function ResizeCrop() {
       <form onSubmit={onCrop}>
         <section>
           <label htmlFor="aspect-select">Aspect</label>
-          <select id="aspect-select" name="aspect">
+          <select className="text-black" id="dimensions" name="dimensions">
             <option value="custom">Custom</option>
             <option value="portrait-9-16">Portrait (9:16)</option>
             <option value="portrait-3-4">Portrait (3:4)</option>
@@ -73,6 +74,23 @@ export default function ResizeCrop() {
           <input type="number" min="1" />
           <label htmlFor="height">Height:</label>
           <input type="number" min="1" />
+        </section>
+        <section className="max-w-64">
+          <Tabs />
+          <div>
+            <p>
+              Resizes the image to fit inside the bounding box specified by the
+              dimensions, maintaining the aspect ratio.
+            </p>
+            <p>
+              Resizes the image to fill the specified dimensions without
+              distortion. The image may be cropped as a result.
+            </p>
+            <p>
+              Extracts a region of the specified dimensions from the original
+              image without first resizing it.
+            </p>
+          </div>
         </section>
         {/* <h2>Gravity</h2>
         <select
@@ -97,29 +115,6 @@ export default function ResizeCrop() {
           <option value="fill_pad">Fill with Padding</option>
           <option value="crop">Crop</option>
         </select> */}
-        {/* <h2>Cropping/viewport Dimensions</h2>
-        <select
-          className="text-black"
-          id="dimensions"
-          name="dimensions"
-          data-jcf='{"maxVisibleItems": 12}'
-        >
-          <option value=",h_169,w_300">
-            Small landscape (16:9) (h_169,w_300)
-          </option>
-          <option value=",h_366,w_650">
-            Large landscape (16:9) (h_366,w_650)
-          </option>
-          <option value=",h_300,w_225">
-            Small portrait (3:4) (h_300,w_225)
-          </option>
-          <option value=",h_650,w_488">
-            Large portrait (3:4) (h_650,w_488)
-          </option>
-          <option value=",h_300,w_300">Small square (h_300,w_300)</option>
-          <option value=",h_650,w_650">Large square (h_650,w_650)</option>
-          <option value="">Specify no dimensions</option>
-        </select> */}
         {/* <h2>Custom Dimensions</h2>
         <input
           className="text-black"
@@ -127,6 +122,7 @@ export default function ResizeCrop() {
           name="custom-dimensions"
           placeholder="h_300,w_400"
         /> */}
+        {/* make sure concatenate h and w onto width and height */}
         <button className="block bg-white text-black mt-8" type="submit">
           Apply Transformation
         </button>
