@@ -3,13 +3,13 @@ export const tabdata = [
     key: "fit",
     name: "fit",
     description:
-      "Resizes the image to fit inside the bounding box specified by the dimensions, maintaining the aspect ratio.",
+      "Resize the image to fit within the specified bounding box dimensions while maintaining the aspect ratio.",
   },
   {
     key: "fll",
-    name: "fll",
+    name: "fill",
     description:
-      "Resizes the image to fill the specified dimensions without distortion. The image may be cropped as a result.",
+      "Resize the image to fill the specified dimensions without distortion, which may result in cropping.",
   },
   {
     key: "crop",

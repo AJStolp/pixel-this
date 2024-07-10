@@ -2,7 +2,9 @@ import { useState } from "react";
 import { tabdata } from "./tab-data";
 
 export default function Tabs() {
-  const [selectedKey, setSelectedKey] = useState<string | null>(null);
+  const [selectedKey, setSelectedKey] = useState<string | null>(
+    tabdata[0].key || null
+  );
 
   function toggleCropSelection(key: string) {
     setSelectedKey(selectedKey === key ? null : key);
@@ -15,9 +17,7 @@ export default function Tabs() {
           <a
             href="#"
             className={`inline-block px-4 py-3 rounded-lg ${
-              selectedKey === value.key
-                ? "text-white bg-blue-600"
-                : "text-gray-500"
+              selectedKey === value.key ? "text-white bg-black" : "text-black"
             }`}
             onClick={() => toggleCropSelection(value.key)}
           >
