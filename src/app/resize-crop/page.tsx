@@ -77,20 +77,6 @@ export default function ResizeCrop() {
         </section>
         <section className="max-w-64">
           <Tabs />
-          <div>
-            <p>
-              Resizes the image to fit inside the bounding box specified by the
-              dimensions, maintaining the aspect ratio.
-            </p>
-            <p>
-              Resizes the image to fill the specified dimensions without
-              distortion. The image may be cropped as a result.
-            </p>
-            <p>
-              Extracts a region of the specified dimensions from the original
-              image without first resizing it.
-            </p>
-          </div>
         </section>
         {/* <h2>Gravity</h2>
         <select
