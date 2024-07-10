@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Tabs from "../components/tabs/tabs";
 
 export default function ResizeCrop() {
   const [error, setError] = useState<string | null>(null);
@@ -8,6 +9,9 @@ export default function ResizeCrop() {
   const [transformedImageUrl, setTransformedImageUrl] = useState<string | null>(
     null
   );
+
+  const [height, setHeight] = useState<string>("");
+  const [width, setWidth] = useState<string>("");
 
   const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
@@ -59,7 +63,7 @@ export default function ResizeCrop() {
       <form onSubmit={onCrop}>
         <section>
           <label htmlFor="aspect-select">Aspect</label>
-          <select id="aspect-select" name="aspect">
+          <select className="text-black my-4" id="dimensions" name="dimensions">
             <option value="custom">Custom</option>
             <option value="portrait-9-16">Portrait (9:16)</option>
             <option value="portrait-3-4">Portrait (3:4)</option>
@@ -68,11 +72,26 @@ export default function ResizeCrop() {
             <option value="landscape-4-3">Landscape (4:3)</option>
           </select>
         </section>
-        <section>
+        <section className="my-4">
           <label htmlFor="width">Width:</label>
-          <input type="number" min="1" />
+          <input
+            type="number"
+            min="1"
+            value={width}
+            onChange={(e) => setWidth(e.target.value)}
+            placeholder="Enter"
+          />
           <label htmlFor="height">Height:</label>
-          <input type="number" min="1" />
+          <input
+            type="number"
+            min="1"
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
+            placeholder="Enter"
+          />
+        </section>
+        <section className="max-w-64 my-4">
+          <Tabs />
         </section>
         {/* <h2>Gravity</h2>
         <select
@@ -97,29 +116,6 @@ export default function ResizeCrop() {
           <option value="fill_pad">Fill with Padding</option>
           <option value="crop">Crop</option>
         </select> */}
-        {/* <h2>Cropping/viewport Dimensions</h2>
-        <select
-          className="text-black"
-          id="dimensions"
-          name="dimensions"
-          data-jcf='{"maxVisibleItems": 12}'
-        >
-          <option value=",h_169,w_300">
-            Small landscape (16:9) (h_169,w_300)
-          </option>
-          <option value=",h_366,w_650">
-            Large landscape (16:9) (h_366,w_650)
-          </option>
-          <option value=",h_300,w_225">
-            Small portrait (3:4) (h_300,w_225)
-          </option>
-          <option value=",h_650,w_488">
-            Large portrait (3:4) (h_650,w_488)
-          </option>
-          <option value=",h_300,w_300">Small square (h_300,w_300)</option>
-          <option value=",h_650,w_650">Large square (h_650,w_650)</option>
-          <option value="">Specify no dimensions</option>
-        </select> */}
         {/* <h2>Custom Dimensions</h2>
         <input
           className="text-black"
@@ -127,7 +123,11 @@ export default function ResizeCrop() {
           name="custom-dimensions"
           placeholder="h_300,w_400"
         /> */}
-        <button className="block bg-white text-black mt-8" type="submit">
+        {/* make sure concatenate h and w onto width and height */}
+        <button
+          className="block text-black mt-8 p-2 bg-primary text-white rounded"
+          type="submit"
+        >
           Apply Transformation
         </button>
       </form>
